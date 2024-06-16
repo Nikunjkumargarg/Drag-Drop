@@ -1,22 +1,20 @@
-class Base {
-  num: number;
+type a = {
+  ab: string;
+  bc: number;
+};
 
-  private constructor(num: number) {
-    this.num = num;
-  }
+type b = {
+  ba: string;
+  bb: number;
+};
 
-  getNumber(): number {
-    return this.num;
-  }
+type abc = a & b;
 
-  static createInstance(num: number): Base {
-    return new Base(num);
-  }
-}
+const hello: abc = {
+  ab: "nikunj",
+  bc: 23,
+  ba: "asdf",
+  bb: 54,
+};
 
-// Usage
-const instance = Base.createInstance(10);
-console.log(instance.getNumber()); // Output: 10
-
-// This would cause an error
-// const invalidInstance = new Base(10); // Error: Constructor of class 'Base' is private and only accessible within the class declaration.
+console.log(hello);
