@@ -1,20 +1,25 @@
-type a = {
-  ab: string;
-  bc: number;
-};
+class Car {
+  driving() {
+    console.log("driving a car");
+  }
+}
 
-type b = {
-  ba: string;
-  bb: number;
-};
+class truck {
+  truckhorn() {
+    console.log("truck is horning");
+  }
+  driving() {
+    console.log("driving a truck");
+  }
+}
 
-type abc = a & b;
+type vehicle = Car | truck;
+const v1 = new Car();
+function drivingacar(vehicle: vehicle) {
+  vehicle.driving();
+  if (vehicle instanceof truck) {
+    vehicle.truckhorn();
+  }
+}
 
-const hello: abc = {
-  ab: "nikunj",
-  bc: 23,
-  ba: "asdf",
-  bb: 54,
-};
-
-console.log(hello);
+drivingacar(v1);
