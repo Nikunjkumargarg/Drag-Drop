@@ -1,14 +1,8 @@
-interface lengthy {
-  length: number;
-}
-function countAndDescribe<T extends lengthy>(element: T): [T, string] {
-  let descriptionText = "Got no value";
-  if (element.length === 1) {
-    descriptionText = "Got one value";
-  } else if (element.length > 1) {
-    descriptionText = "Got values";
-  }
-  return [element, descriptionText];
+function extractAndConvert<T extends object, U extends keyof T>(
+  obj: T,
+  key: U
+) {
+  return obj[key];
 }
 
-console.log(countAndDescribe({ name: "nikunj", length: 6 }));
+extractAndConvert({ name: "nikunj" }, "name");
