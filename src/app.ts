@@ -30,11 +30,17 @@ function Log(target: any, propertyName: string) {
   console.log("property decorator!");
   console.log(target, propertyName);
 }
+function Log2(target: any, name: string, descriptor: PropertyDescriptor) {
+  console.log("accessor decorator");
+  console.log(target);
+  console.log(name);
+  console.log(descriptor);
+}
 class Product {
   title: string;
   @Log
   private _price: number;
-
+  @Log2
   set price(val: number) {
     if (val > 0) {
       this._price = val;
